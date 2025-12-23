@@ -6,7 +6,10 @@ function SocialLinks() {
     <div>
       <ul className="flex justify-center gap-4">
         {links.map((link) => (
-          <Link key={link.iconName}>
+          <Link
+            key={link.iconName}
+            className="translate-y-0 transform transition-all duration-200 hover:-translate-y-1"
+          >
             <ion-icon
               name={`logo-${link.iconName}`}
               style={{

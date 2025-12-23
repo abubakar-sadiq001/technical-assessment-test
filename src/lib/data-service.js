@@ -1,7 +1,10 @@
 import { supabase } from "./supabase";
 
 export async function getWeekDays() {
-  const { data, error } = await supabase.from("weekDays").select("*");
+  const { data, error } = await supabase
+    .from("weekDays")
+    .select("*")
+    .order("id", { ascending: true });
 
   if (error) {
     throw new Error(error.message);

@@ -1,11 +1,11 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import AppLayout from "./components/AppLayout";
-import Home from "./pages/Home";
-import Discover from "./pages/Discover";
-import Rewards from "./pages/Rewards";
-import PageNotFound from "./pages/PageNotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AppLayout from "./components/AppLayout";
+import Discover from "./pages/Discover";
+import Home from "./pages/Home";
+import PageNotFound from "./pages/PageNotFound";
+import Rewards from "./pages/Rewards";
 
 // Create a client
 const queryClient = new QueryClient({

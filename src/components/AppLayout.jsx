@@ -5,6 +5,10 @@ import SideBar from "./SideBar";
 function AppLayout() {
   return (
     <div className="flex">
+      {/* <div className="fixed right-0 left-0 z-100 flex h-screen items-center justify-center">
+        // <SuccessModal />
+      </div> */}
+
       <SideBar />
 
       <div className="flex-1 border-l-5">
