@@ -7,9 +7,9 @@ function AppLayout() {
     <div className="flex">
       <SideBar />
 
-      <div className="border-l-5 flex-1">
+      <div className="flex-1 border-l-5">
         <Header />
-        <main className="bg-green-400 px-4 my-10">
+        <main className="bg-gray-50 px-4 py-10">
           <Outlet />
         </main>
       </div>
