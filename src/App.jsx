@@ -6,6 +6,8 @@ import Discover from "./pages/Discover";
 import Home from "./pages/Home";
 import PageNotFound from "./pages/PageNotFound";
 import Rewards from "./pages/Rewards";
+import Signup from "./auth/Signup";
+import Signin from "./auth/Signin";
 
 // Create a client
 const queryClient = new QueryClient({
@@ -24,11 +26,14 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route element={<AppLayout />}>
-              <Route path="*" element={<PageNotFound />} />
               <Route index="/" element={<Home />} />
               <Route path="discover" element={<Discover />} />
               <Route path="rewards" element={<Rewards />} />
             </Route>
+
+            <Route path="*" element={<PageNotFound />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

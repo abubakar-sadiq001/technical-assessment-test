@@ -52,8 +52,8 @@ function SideBar() {
             key={link.name}
             className={({ isActive }) =>
               isActive
-                ? "mb-2 flex items-center gap-3 rounded-[7px] bg-[rgba(144,19,254,0.2)] px-3 py-3 text-[17px] text-[#9013FE]"
-                : "mb-2 flex items-center gap-4 px-3 py-3 text-[17px] text-gray-900 transition-all"
+                ? "mb-2 flex items-center gap-3 rounded-[7px] bg-[rgba(144,19,254,0.2)] px-3 py-3 text-[#9013FE]"
+                : "mb-2 flex items-center gap-4 rounded-[7px] px-3 py-3 text-[16px] text-gray-900 transition-all hover:bg-[rgba(144,19,254,0.1)]"
             }
             // className="mb-7 flex items-center gap-4 text-[17px] text-gray-900"
           >

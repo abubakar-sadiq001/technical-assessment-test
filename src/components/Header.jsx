@@ -24,7 +24,7 @@ function Header() {
         </div>
       </button>
 
-      <NotificationBox />
+      {/* <NotificationBox /> */}
     </div>
   );
 }

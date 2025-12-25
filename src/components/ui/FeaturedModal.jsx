@@ -1,12 +1,12 @@
 import { useRef } from "react";
 import { createPortal } from "react-dom";
-import Success from "./Success";
+import FeaturedModalContents from "./FeaturedModalContents";
 
-function SuccessModal({ showSuccessModal, setShowSuccessModal }) {
+function SuccessModal({ showFeaturedModal, setShowFeaturedModal }) {
   const overlayRef = useRef(null);
 
   function handleClose() {
-    setShowSuccessModal(false);
+    setShowFeaturedModal(false);
   }
 
   // Handle click on overlay only
@@ -16,7 +16,7 @@ function SuccessModal({ showSuccessModal, setShowSuccessModal }) {
     }
   }
 
-  if (showSuccessModal != true) return null;
+  if (showFeaturedModal != true) return null;
 
   return createPortal(
     <div
@@ -24,7 +24,7 @@ function SuccessModal({ showSuccessModal, setShowSuccessModal }) {
       onClick={handleOverlayClick}
       ref={overlayRef}
     >
-      <div className="relative my-12.5 w-full max-w-85 overflow-hidden rounded-lg bg-white p-6 text-center shadow-xl">
+      <div className="relative my-12.5 w-full max-w-[500px] overflow-hidden rounded-lg bg-white p-6 shadow-xl">
         <ion-icon
           name="close-outline"
           size="large"
@@ -38,7 +38,7 @@ function SuccessModal({ showSuccessModal, setShowSuccessModal }) {
           onClick={handleClose}
         ></ion-icon>
 
-        <Success />
+        <FeaturedModalContents />
       </div>
     </div>,
     document.body,

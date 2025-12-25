@@ -1,4 +1,4 @@
-function Featured() {
+function Featured({ setShowFeaturedModal }) {
   return (
     <div className="translate-y-0 transform rounded-xl bg-white shadow-[0px_5px_10px] shadow-[#dcdcdc] duration-300 hover:-translate-y-1.5 hover:shadow-[0px_8px_10px]">
       <header className="flex w-full max-w-87.5 items-center justify-between gap-2 rounded-tl-xl rounded-tr-xl border-b-[#f3f4f6] bg-[linear-gradient(135deg,_#9013FE_0%,_#70D6FF_100%)] p-4 text-[13px] text-white">
@@ -36,7 +36,12 @@ function Featured() {
             <ion-icon name="calendar"></ion-icon>
             <p className="text-[13px]">Sign up</p>
           </button>
-          <button className="flex cursor-pointer items-center gap-2 rounded-full bg-pink-500 bg-[linear-gradient(45deg,#9013FE,#FF8687)] px-4 py-2 text-sm font-semibold text-white">
+          <button
+            className="flex cursor-pointer items-center gap-2 rounded-full bg-pink-500 bg-[linear-gradient(45deg,#9013FE,#FF8687)] px-4 py-2 text-sm font-semibold text-white"
+            onClick={() => {
+              setShowFeaturedModal(true);
+            }}
+          >
             <ion-icon name="calendar"></ion-icon>
             <p className="text-[13px]">Claim 50 pts</p>
           </button>

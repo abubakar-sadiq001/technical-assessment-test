@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { claimPoints } from "./data-service";
+// import { claimPoints } from "./data-service";
 
 export function useUpdateSettings() {
   const queryClient = useQueryClient();
 
   const { mutate: updateStreak, isPending } = useMutation({
-    mutationFn: ({ streakID }) => claimPoints(streakID),
+    // mutationFn: ({ streakID }) => claimPoints(streakID),
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["weekDays"] });

@@ -1,14 +1,16 @@
+import { useGetProfile } from "../lib/useGetProfile";
 import { useGetWeeks } from "../lib/useGetWeekDay";
-import { useUpdateSettings } from "../lib/useUpdateStreak";
 
 function DailyStreak({ setShowSuccessModal }) {
   const { weekDays, isLoading } = useGetWeeks();
   const currentDay = new Date().getDay();
-  // const { updateStreak, isPending } = useUpdateSettings();
   const totalClaimedDays =
     weekDays?.filter((day) => day.isClaimed === true).length || 0;
 
-  const activeDay = weekDays?.find((day) => day.week_value === currentDay);
+  const { profile, isLoading: isGetProfile } = useGetProfile();
+  console.log(profile);
+
+  //   const activeDay = weekDays?.find((day) => day.week_value === currentDay);
 
   //
 
@@ -82,6 +84,7 @@ function DailyStreak({ setShowSuccessModal }) {
         >
           <div>
             <img
+              src="./energy-icon-white.svg"
               // src={
               //   activeDay?.isClaimed === true || isPending
               //     ? "./energy-icon-gray.svg"
@@ -90,8 +93,7 @@ function DailyStreak({ setShowSuccessModal }) {
               width={20}
             />
           </div>
-          {/* <p>{isPending === true ? "Claiming..." : "Claimed Today"}</p> */}
-          Claim
+          Claim Today
         </button>
       </section>
     </div>

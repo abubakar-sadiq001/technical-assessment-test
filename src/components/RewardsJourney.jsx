@@ -1,8 +1,8 @@
-import DailyStreak from "./DailyStreak";
+import DailyStreak2 from "./DailyStreak2";
 import Featured from "./Featured";
 import PointsBalance from "./PointsBalance";
 
-function RewardsJourney({ setShowConfetti }) {
+function RewardsJourney({ setShowSuccessModal, setShowFeaturedModal }) {
   return (
     <div>
       <h1 className="my-3 border-l-4 border-[#901efe] pl-4 text-2xl font-semibold">
@@ -12,9 +12,10 @@ function RewardsJourney({ setShowConfetti }) {
       <div className="flex justify-center gap-5">
         <PointsBalance />
 
-        <DailyStreak setShowConfetti={setShowConfetti} />
+        {/* <DailyStreak setShowSuccessModal={setShowSuccessModal} /> */}
+        <DailyStreak2 />
 
-        <Featured />
+        <Featured setShowFeaturedModal={setShowFeaturedModal} />
       </div>
     </div>
   );
