@@ -1,7 +1,7 @@
 function Featured({ setShowFeaturedModal }) {
   return (
-    <div className="translate-y-0 transform rounded-xl bg-white shadow-[0px_5px_10px] shadow-[#dcdcdc] duration-300 hover:-translate-y-1.5 hover:shadow-[0px_8px_10px]">
-      <header className="flex w-full max-w-87.5 items-center justify-between gap-2 rounded-tl-xl rounded-tr-xl border-b-[#f3f4f6] bg-[linear-gradient(135deg,_#9013FE_0%,_#70D6FF_100%)] p-4 text-[13px] text-white">
+    <div className="w-full translate-y-0 transform rounded-xl bg-white shadow-[0px_5px_10px] shadow-[#dcdcdc] duration-300 hover:-translate-y-1.5 hover:shadow-[0px_8px_10px]">
+      <header className="flex w-full items-center justify-between gap-2 rounded-tl-xl rounded-tr-xl border-b-[#f3f4f6] bg-[linear-gradient(135deg,_#9013FE_0%,_#70D6FF_100%)] p-4 text-[13px] text-white">
         <div className="flex flex-col justify-between gap-4">
           <p className="w-full max-w-20 rounded-full bg-[#ffffff33] py-1 text-center text-[12px] backdrop-blur-sm">
             Featured
@@ -22,7 +22,7 @@ function Featured({ setShowFeaturedModal }) {
             <p className="text-[14px] font-semibold text-gray-800">
               Automate and Optimize Your Schedule
             </p>
-            <p className="my-2 mb-4 w-full max-w-62.5 text-[13px] text-gray-600">
+            <p className="my-2 mb-4 w-full max-w-62.5 text-[13px] text-gray-600 max-[988px]:max-w-full">
               Reclaim.ai is an AI-powered calendar assistant that automatically
               schedules your tasks, meetings, and breaks to boost productivity.
               Free to try — earn Flowva Points when you sign up!
@@ -31,7 +31,7 @@ function Featured({ setShowFeaturedModal }) {
         </div>
 
         {/*  */}
-        <div className="flex justify-between border-t border-[#f3f4f6] px-3 py-[4.5px]">
+        <div className="flex justify-between border-t border-[#f3f4f6] px-3 py-[4.5px] max-[988px]:py-2">
           <button className="flex cursor-pointer items-center justify-center gap-2 rounded-full border-0 bg-[#9013fe] px-4 py-2 font-semibold text-white transition-all duration-200 hover:bg-[#8628da]">
             <ion-icon name="calendar"></ion-icon>
             <p className="text-[13px]">Sign up</p>

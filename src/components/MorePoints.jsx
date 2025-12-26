@@ -5,8 +5,8 @@ function MorePoints() {
         Earn More Points
       </h1>
 
-      <div className="flex gap-4">
-        <div className="w-full max-w-87.5 translate-y-0 transform rounded-xl border border-[#e5e7eb] bg-gray-50 duration-300 hover:-translate-y-1.5 hover:border-[#901efe] hover:shadow-[0px_5px_10px] hover:shadow-[#dcdcdc]">
+      <div className="flex gap-4 max-[684px]:flex-col">
+        <div className="w-full max-w-87.5 translate-y-0 transform rounded-xl border border-[#e5e7eb] bg-gray-50 duration-300 hover:-translate-y-1.5 hover:border-[#901efe] hover:shadow-[0px_5px_10px] hover:shadow-[#dcdcdc] max-[684px]:max-w-full">
           <header className="flex items-center gap-3 rounded-tl-xl rounded-tr-xl bg-white p-4">
             <ion-icon
               name="star-outline"
@@ -32,7 +32,7 @@ function MorePoints() {
           </section>
         </div>
         {/*  */}
-        <div className="w-full max-w-87.5 translate-y-0 transform rounded-xl border border-[#e5e7eb] bg-gray-50 duration-300 hover:-translate-y-1.5 hover:border-[#901efe] hover:shadow-[0px_5px_10px] hover:shadow-[#dcdcdc]">
+        <div className="w-full max-w-87.5 translate-y-0 transform rounded-xl border border-[#e5e7eb] bg-gray-50 duration-300 hover:-translate-y-1.5 hover:border-[#901efe] hover:shadow-[0px_5px_10px] hover:shadow-[#dcdcdc] max-[684px]:max-w-full">
           <header className="flex items-center gap-3 rounded-tl-xl rounded-tr-xl bg-white p-4">
             <ion-icon
               name="share-social-outline"

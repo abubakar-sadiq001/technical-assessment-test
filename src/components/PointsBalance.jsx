@@ -9,7 +9,7 @@ function PointsBalance() {
   const calculatedRange = Math.min((PointBalance / MAX) * 100, 100);
 
   return (
-    <div className="w-full max-w-87.5 translate-y-0 transform rounded-xl bg-gray-50 shadow-[0px_5px_10px] shadow-[#dcdcdc] duration-300 hover:-translate-y-1.5 hover:shadow-[0px_8px_10px]">
+    <div className="w-full translate-y-0 transform rounded-xl bg-gray-50 shadow-[0px_5px_10px] shadow-[#dcdcdc] duration-300 hover:-translate-y-1.5 hover:shadow-[0px_8px_10px]">
       <header className="flex items-center gap-2 rounded-tl-xl rounded-tr-xl border-b-[#f3f4f6] bg-[#eef2ff] p-5 text-[17px] font-semibold text-gray-700">
         <ion-icon
           name="medal-outline"

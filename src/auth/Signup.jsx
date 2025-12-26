@@ -1,18 +1,25 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { useSignup } from "../lib/useSignUp";
 
 function Signup() {
+  const [searchParam, setSeachParam] = useSearchParams();
+  // const xyz = setSeachParam(searchParam);
+  console.log(searchParam.get("ref"));
+
   const { signupUser, isPending } = useSignup();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
   const { errors } = formState;
 
   function onSubmit({ email, password }) {
-    signupUser({ email, password, onSettled: () => reset() });
+    const refQuery = searchParam?.get("ref") || "";
+    const referredBy = refQuery;
+
+    signupUser({ email, password, referredBy, onSettled: () => reset() });
   }
 
   return (
-    <div className="h-screen w-full bg-[linear-gradient(#901efe,#6D28D9)] p-5">
+    <div className="w-full bg-[linear-gradient(#901efe,#6D28D9)] p-5">
       <div className="mx-auto w-full max-w-105 rounded-md bg-white px-8 py-5">
         <div className="text-center">
           <h1 className="text-[23px] font-bold text-[#901efe]">
@@ -97,7 +104,7 @@ function Signup() {
               cursor: isPending ? "no-drop" : "pointer",
             }}
           >
-            Sign Up Account
+            {isPending ? "Signing up..." : "Sign Up Account"}
           </button>
         </form>
 

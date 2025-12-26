@@ -1,8 +1,36 @@
-import { Link } from "react-router";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useSignin } from "../lib/useSignin";
 
 function Signin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const { signinUser, isPending } = useSignin();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!email || !password) return;
+
+    signinUser(
+      { email, password },
+      {
+        onSettled: () => {
+          setEmail("");
+          setPassword("");
+        },
+
+        onError: () => {
+          setError("Invalid email and/or password");
+        },
+      },
+    );
+    // signin({ email, password });
+  }
+
   return (
-    <div className="h-screen w-full bg-[linear-gradient(#901efe,#6D28D9)] p-5">
+    <div className="w-full bg-[linear-gradient(#901efe,#6D28D9)] p-5">
       <div className="mx-auto w-full max-w-105 rounded-md bg-white px-8 py-5">
         <div className="text-center">
           <h1 className="text-[23px] font-bold text-[#901efe]">
@@ -13,7 +41,19 @@ function Signin() {
           </p>
         </div>
 
-        <form className="my-5">
+        <form onSubmit={handleSubmit} className="my-5">
+          {error && (
+            <div className="my-3 flex w-full items-center gap-2 rounded-md bg-red-100 p-3">
+              <ion-icon
+                name="alert-circle-outline"
+                style={{
+                  color: " #fb2c36",
+                  height: "25px",
+                }}
+              ></ion-icon>
+              <p className="text-[13px] text-red-500">{error}</p>
+            </div>
+          )}
           <div>
             <div>
               <label htmlFor="email" className="text-[15px]">
@@ -23,6 +63,9 @@ function Signin() {
             <input
               type="email"
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={isPending}
               className="my-2 w-full rounded-md border px-4 py-3"
               placeholder="youremail@example.com"
             />
@@ -38,13 +81,22 @@ function Signin() {
             <input
               type="password"
               id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              disabled={isPending}
               className="my-2 w-full rounded-md border px-4 py-3"
               placeholder="***********"
             />
           </div>
 
-          <button className="my-3 w-full cursor-pointer rounded-full bg-[#901efe] py-4 text-center font-semibold text-white">
-            Sign in
+          <button
+            disabled={isPending}
+            className="my-3 w-full cursor-pointer rounded-full bg-[#901efe] py-4 text-center font-semibold text-white"
+            style={{
+              cursor: isPending ? "no-drop" : "pointer",
+            }}
+          >
+            {isPending ? "Signing in..." : "Sign in"}
           </button>
         </form>
 

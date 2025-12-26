@@ -24,7 +24,7 @@ function SuccessModal({ showFeaturedModal, setShowFeaturedModal }) {
       onClick={handleOverlayClick}
       ref={overlayRef}
     >
-      <div className="relative my-12.5 w-full max-w-[500px] overflow-hidden rounded-lg bg-white p-6 shadow-xl">
+      <div className="relative mx-3 my-12.5 w-full max-w-[500px] overflow-hidden rounded-lg bg-white p-6 shadow-xl">
         <ion-icon
           name="close-outline"
           size="large"

@@ -18,7 +18,7 @@ function RedeemTableOperations({ filterName, setFilterName }) {
         Redeem Your Points
       </h1>
 
-      <div className="flex gap-2">
+      <div className="flex gap-2 overflow-x-auto bg-red-600">
         <button
           className={`flex items-center gap-3 rounded-tl-[10px] rounded-tr-[10px] px-4 py-3 ${filterName === "all" ? " relative cursor-no-drop border-b-2 border-[#901efe] bg-[rgba(144,19,254,0.2)] text-[#901efe] " : "cursor-pointer text-gray-500 hover:bg-[rgba(144,19,254,0.1)]"}`}
           onClick={() => setFilterName("all")}

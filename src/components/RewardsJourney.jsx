@@ -9,7 +9,7 @@ function RewardsJourney({ setShowSuccessModal, setShowFeaturedModal }) {
         Your Rewards Journey
       </h1>
 
-      <div className="flex justify-center gap-5">
+      <div className="grid grid-cols-3 justify-center gap-5 max-[988px]:grid-cols-1">
         <PointsBalance />
 
         {/* <DailyStreak setShowSuccessModal={setShowSuccessModal} /> */}

@@ -11,7 +11,7 @@ function AppLayout() {
 
       <SideBar />
 
-      <div className="flex-1 border-l-5">
+      <div className="flex-1 border-l border-[#E9D4FF]">
         <Header />
         <main className="bg-gray-50 px-4 py-10">
           <Outlet />

@@ -1,8 +1,21 @@
 import { useEffect, useState } from "react";
+import { getProfileData } from "../lib/data-service";
+import { useUser } from "../lib/useUser";
 
 function ReferralLink() {
-  const link = "https://flowvahub.com/signup/?ref=sdik8337";
   const [isCopied, setIsCopied] = useState(false);
+  const [code, setCode] = useState("");
+  console.log(code);
+
+  // const { profile, isLoading } = useGetProfile();
+  const { user } = useUser();
+  const profile = getProfileData(user?.id);
+  profile.then((data) => {
+    setCode(data?.referral_code);
+    // console.log(data);
+  });
+  // const link = `http://localhost:5173/signup?ref=`;
+  const link = `http://localhost:5173/signup?ref=${code}`;
 
   useEffect(() => {
     setTimeout(() => {
@@ -44,6 +57,7 @@ function ReferralLink() {
               top: 47,
               fontSize: "24px",
               color: "#901efe",
+              backgroundColor: "#fff",
               cursor: "pointer",
             }}
           ></ion-icon>

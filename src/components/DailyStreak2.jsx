@@ -1,4 +1,3 @@
-import { useGetProfile } from "../lib/useGetProfile";
 import { useGetWeeks } from "../lib/useGetWeekDay";
 
 function DailyStreak({ setShowSuccessModal }) {
@@ -7,8 +6,8 @@ function DailyStreak({ setShowSuccessModal }) {
   const totalClaimedDays =
     weekDays?.filter((day) => day.isClaimed === true).length || 0;
 
-  const { profile, isLoading: isGetProfile } = useGetProfile();
-  console.log(profile);
+  // const { profile, isLoading: isGetProfile } = useGetProfile();
+  // console.log(profile);
 
   //   const activeDay = weekDays?.find((day) => day.week_value === currentDay);
 
@@ -26,7 +25,7 @@ function DailyStreak({ setShowSuccessModal }) {
   // }
 
   return (
-    <div className="max-w-87.5 translate-y-0 transform rounded-xl bg-gray-50 shadow-[0px_5px_10px] shadow-[#dcdcdc] duration-300 hover:-translate-y-1.5 hover:shadow-[0px_8px_10px]">
+    <div className="w-full translate-y-0 transform rounded-xl bg-gray-50 shadow-[0px_5px_10px] shadow-[#dcdcdc] duration-300 hover:-translate-y-1.5 hover:shadow-[0px_8px_10px]">
       <header className="flex items-center gap-2 rounded-tl-xl rounded-tr-xl border-b-[#f3f4f6] bg-[#eef2ff] p-5 text-[17px] font-semibold text-gray-700">
         <ion-icon
           name="calendar-clear-outline"
@@ -45,12 +44,12 @@ function DailyStreak({ setShowSuccessModal }) {
         </h1>
 
         {/*  */}
-        <ul className="mt-8 flex gap-2">
+        <ul className="mt-8 flex justify-center gap-2">
           {weekDays?.map((day) => (
             <li key={day.id} className="">
               {!isLoading ? (
                 <div
-                  className={`flex h-10 w-10 items-center ${day.week_value === currentDay && " rounded-full border-2 border-[#901efe] ring-2 ring-[#9013FE] ring-offset-1 "} justify-center rounded-full ${day.isClaimed === true && day.week_value != currentDay ? "border-3 border-cyan-200 bg-[#70D6FF] text-white " : "bg-gray-200"} text-center font-semibold`}
+                  className={`flex w-full items-center px-3 py-2 max-[988px]:px-4 max-[988px]:py-3 ${day.week_value === currentDay && " rounded-full border-2 border-[#901efe] ring-2 ring-[#9013FE] ring-offset-1 "} justify-center rounded-full ${day.isClaimed === true && day.week_value != currentDay ? "border-3 border-cyan-200 bg-[#70D6FF] text-white " : "bg-gray-200"} text-center font-semibold`}
                 >
                   <p
                     className={`text-[14px] ${day.isClaimed === true && day.week_value != currentDay ? "text-white" : "text-gray-500"} `}

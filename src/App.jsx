@@ -8,6 +8,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Rewards from "./pages/Rewards";
 import Signup from "./auth/Signup";
 import Signin from "./auth/Signin";
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 // Create a client
 const queryClient = new QueryClient({
@@ -25,7 +26,13 @@ function App() {
         <ReactQueryDevtools />
         <BrowserRouter>
           <Routes>
-            <Route element={<AppLayout />}>
+            <Route
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
               <Route index="/" element={<Home />} />
               <Route path="discover" element={<Discover />} />
               <Route path="rewards" element={<Rewards />} />

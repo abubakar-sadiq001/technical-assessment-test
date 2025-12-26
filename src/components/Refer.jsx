@@ -1,7 +1,21 @@
+import { useState } from "react";
+import { getProfileData } from "../lib/data-service";
+import { useUser } from "../lib/useUser";
 import ReferralLink from "./ReferralLink";
 import SocialLinks from "./SocialLinks";
 
 function Refer() {
+  const [refCount, setRefCount] = useState(0);
+  const [points, setPoints] = useState(0);
+  // console.log(points);
+
+  const { user, isLoading } = useUser();
+  const profile = getProfileData(user?.id);
+  profile.then((data) => {
+    setRefCount(data?.referrals_count);
+    setPoints(data?.referral_points);
+  });
+
   return (
     <div>
       <h1 className="my-3 border-l-4 border-[#901efe] pl-4 text-2xl font-semibold">
@@ -30,12 +44,24 @@ function Refer() {
         <section className="p-4">
           <div className="flex justify-evenly">
             <div className="text-center">
-              <p className="text-[25px] font-semibold text-[#901efe]">0</p>
+              <p className="text-[25px] font-semibold text-[#901efe]">
+                {isLoading ? (
+                  <p className="h-7 w-20 animate-pulse rounded-sm bg-gray-300"></p>
+                ) : (
+                  refCount
+                )}
+              </p>
               <p className="text-[14px]">Referrals</p>
             </div>
 
             <div className="text-center">
-              <p className="text-[25px] font-semibold text-[#901efe]">0</p>
+              {isLoading ? (
+                <p className="h-7 w-20 animate-pulse rounded-sm bg-gray-300"></p>
+              ) : (
+                <p className="text-[25px] font-semibold text-[#901efe]">
+                  {points}
+                </p>
+              )}
               <p className="text-[14px]">Points Earned</p>
             </div>
           </div>

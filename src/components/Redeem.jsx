@@ -31,7 +31,7 @@ function Redeem() {
       />
 
       {!isLoading ? (
-        <ul className="mt-10 grid grid-cols-3 gap-6">
+        <ul className="mt-10 grid grid-cols-3 gap-6 max-[988px]:grid-cols-2 max-[632px]:grid-cols-1">
           {filteredRewards?.map((reward) => (
             <li
               key={reward.id}
