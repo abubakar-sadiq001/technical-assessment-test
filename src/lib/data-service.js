@@ -1,6 +1,6 @@
 import { supabase } from "./supabase";
 
-const title = "Welcome, Sdik!";
+const title = "Welcome 👋";
 const messagage =
   "We're thrilled to have you on board! Explore powerful tools, build your personal stack, and start unlocking rewards through daily streaks, referrals, and more. Your journey to smarter productivity starts here.";
 const referralCode = crypto.randomUUID().slice(0, 8);
@@ -163,10 +163,42 @@ export async function getUserNotification(userID) {
     .from("notifications")
     .select("*")
     .eq("user_id", userID)
-    .single();
+    .order("id", { ascending: true });
 
   if (error) throw new Error(error.message);
 
   // console.log(notification);
   return notification;
+}
+
+// DELETE NOTIFICATION
+export async function deleteNotification({ notifId, userId }) {
+  const { error } = await supabase
+    .from("notifications")
+    .delete()
+    .eq("id", notifId)
+    .eq("user_id", userId);
+
+  // console.log(userId);
+  if (error) throw new Error(error.message);
+}
+
+/// MARK ALL NOTIF AS READ
+export async function markAll(userId) {
+  const { error } = await supabase
+    .from("notifications")
+    .update({ is_read: true })
+    .eq("user_id", userId);
+
+  if (error) throw new Error(error.message);
+}
+
+// DELETE ALL NOTIF
+export async function deleteAllNotif(userId) {
+  const { error } = await supabase
+    .from("notifications")
+    .delete()
+    .eq("user_id", userId);
+
+  if (error) throw new Error(error.message);
 }

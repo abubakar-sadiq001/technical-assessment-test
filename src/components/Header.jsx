@@ -1,7 +1,10 @@
 import NotificationBox from "./ui/NotificationBox";
 import Notification from "./Notification";
+import { useState } from "react";
 
 function Header() {
+  const [openBox, setOpenBox] = useState(false);
+
   return (
     <div className="sticky top-0 z-50 flex w-full items-center justify-between bg-gray-50 px-5 py-7 shadow-[0px_2px_20px] shadow-[#e7e7e7]">
       <div>
@@ -16,9 +19,9 @@ function Header() {
         </p>
       </div>
 
-      <Notification />
+      <Notification setOpenBox={setOpenBox} />
 
-      <NotificationBox />
+      {openBox && <NotificationBox />}
     </div>
   );
 }

@@ -11,7 +11,10 @@ function Signin() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (!email || !password) return;
+    if (!email || !password) {
+      setError("missing email/password");
+      return;
+    }
 
     signinUser(
       { email, password },
@@ -19,10 +22,6 @@ function Signin() {
         onSettled: () => {
           setEmail("");
           setPassword("");
-        },
-
-        onError: () => {
-          setError("Invalid email and/or password");
         },
       },
     );

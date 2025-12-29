@@ -97,7 +97,7 @@ function SideBar() {
         </div>{" "}
         <div>
           <h2 className="text-[14px] font-semibold">
-            {isLoading ? "Loading..." : splittedEmail.at(0)}
+            {isLoading ? "Loading..." : splittedEmail?.at(0)}
           </h2>
           <p className="text-[13px] text-gray-400">
             {`${user?.email?.length > 18 ? user?.email.slice(0, 20) + "..." : user?.email.slice(0, 20)}`}

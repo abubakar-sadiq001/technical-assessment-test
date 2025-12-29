@@ -1,13 +1,30 @@
-import { useUser } from "/src/lib/useUser.js";
-import { getUserNotification } from "";
+import useDeleteNotif from "../../lib/useDeleteNotif";
+import useMarkAll from "../../lib/useMarkAll";
+import { useNotification } from "../../lib/useNotifications";
+import { useUser } from "../../lib/useUser";
+import NotificationList from "../NotificationList";
 
 function NotificationBox() {
-  const { user, isPending } = useUser();
-  const notification = getUserNotification();
-  console.log(notification);
+  const { user } = useUser();
+  const { data: notifications } = useNotification();
+  const { markAllNotif, isMarking } = useMarkAll();
+  const { deleteAll, isDeleting } = useDeleteNotif();
+
+  const length = notifications?.length;
+  const markedNotifs = notifications?.filter(
+    (notification) => notification.is_read === false,
+  )?.length;
+
+  function handleMArkAll(id) {
+    markAllNotif(id);
+  }
+
+  function handleDeleteAll(id) {
+    deleteAll(id);
+  }
 
   return (
-    <div className="absolute top-20 right-5 w-full max-w-100 rounded-xl shadow-[0px_5px_5px] shadow-gray-400">
+    <div className="absolute top-20 right-5 w-full max-w-100 rounded-xl shadow-[0px_8px_15px] shadow-gray-300">
       <header className="flex items-center justify-between rounded-tl-xl rounded-tr-xl bg-[linear-gradient(45deg,#901efe,#ffc5c5)] px-5 py-5">
         <div>
           <h1 className="text-[17px] font-semibold text-white">
@@ -15,39 +32,31 @@ function NotificationBox() {
           </h1>
         </div>
         <div className="flex gap-5 text-sm">
-          <button className="cursor-pointer text-[#fff9]">
+          <button
+            onClick={() => handleMArkAll(user?.id)}
+            disabled={isMarking || markedNotifs === 0 || !length}
+            className={`cursor-pointer text-[12px] font-semibold ${markedNotifs === 0 ? "text-[#fff9]" : "rounded-sm px-2 py-1 text-white transition-all duration-200 hover:bg-[#edb4f199]"}`}
+            style={{
+              cursor: isMarking || markedNotifs === 0 ? "no-drop" : "pointer",
+            }}
+          >
             Mark all as read
           </button>
-          <button className="cursor-pointer px-2 py-1 text-white hover:rounded-md hover:bg-[#fff9]">
+          <button
+            onClick={() => handleDeleteAll(user?.id)}
+            disabled={isDeleting || !length}
+            className="cursor-pointer rounded-sm px-2 py-1 text-[12px] font-semibold text-white transition-all duration-200 hover:bg-[#edb4f199]"
+            style={{
+              cursor: isDeleting || !length ? "no-drop" : "pointer",
+            }}
+          >
             Delete All
           </button>
         </div>
       </header>
 
-      <ul className="rounded-br-xl rounded-bl-xl bg-white">
-        <li className="flex justify-between p-3">
-          <div>
-            <div>
-              <img
-                src="Anonymous_face.jpg"
-                width={50}
-                className="rounded-full"
-              />
-            </div>
-
-            <div>
-              <h2>Welcome, Sdik!</h2>
-              <p>We're thrilled to have you onboard!</p>
-              {/* Date */}
-              <p className="text-[12px]">3d ago</p>
-            </div>
-          </div>
-
-          <div>
-            <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-          </div>
-        </li>
-      </ul>
+      {/* NOTIFICATIONS LIST */}
+      <NotificationList />
     </div>
   );
 }

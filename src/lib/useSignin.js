@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { signin } from "./data-service";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export function useSignin() {
   const navigate = useNavigate();
@@ -10,6 +11,11 @@ export function useSignin() {
     onSuccess: (user) => {
       console.log(user);
       navigate("/", { replace: true });
+    },
+
+    onError: (error) => {
+      console.log(error.message);
+      toast.error(error.message);
     },
   });
 

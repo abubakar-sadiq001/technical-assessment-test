@@ -9,6 +9,7 @@ import Rewards from "./pages/Rewards";
 import Signup from "./auth/Signup";
 import Signin from "./auth/Signin";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import { Toaster } from "react-hot-toast";
 
 // Create a client
 const queryClient = new QueryClient({
@@ -43,6 +44,28 @@ function App() {
             <Route path="/signin" element={<Signin />} />
           </Routes>
         </BrowserRouter>
+
+        <Toaster
+          position="top-center"
+          gutter={12}
+          containerStyle={{ margin: "8px" }}
+          toastOptions={{
+            success: {
+              duration: 3000,
+            },
+            error: {
+              duration: 5000,
+            },
+            style: {
+              fontSize: "16px",
+              maxWidth: "500px",
+              padding: "16px 24px",
+              backgroundColor: "#fff",
+              color: "#14141499",
+              boxShadow: "0px 5px 10px #5a475799",
+            },
+          }}
+        />
       </QueryClientProvider>
     </>
   );

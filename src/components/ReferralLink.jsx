@@ -5,7 +5,6 @@ import { useUser } from "../lib/useUser";
 function ReferralLink() {
   const [isCopied, setIsCopied] = useState(false);
   const [code, setCode] = useState("");
-  console.log(code);
 
   // const { profile, isLoading } = useGetProfile();
   const { user } = useUser();
@@ -15,7 +14,7 @@ function ReferralLink() {
     // console.log(data);
   });
   // const link = `http://localhost:5173/signup?ref=`;
-  const link = `http://localhost:5173/signup?ref=${code}`;
+  const link = `http://localhost:5173/signup?ref=${code || "loading"}`;
 
   useEffect(() => {
     setTimeout(() => {
