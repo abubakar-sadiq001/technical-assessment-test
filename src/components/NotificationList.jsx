@@ -5,16 +5,16 @@ import { useNotification } from "../lib/useNotifications";
 import { useUser } from "../lib/useUser";
 import EmptyNotif from "./ui/EmptyNotif";
 
-function NotificationList() {
+function NotificationList({ handleOpenNotification }) {
   const [openDeleteMenuId, setOpenDeleteMenuId] = useState(false);
 
   const { user } = useUser();
   const { data: notifications } = useNotification();
   const { deleteNotif, isDeleting } = useDeleteNotification();
 
-  function handleOpenNotification(id) {
-    console.log(id);
-  }
+  // function handleOpenNotification(id) {
+  //   console.log(id);
+  // }
 
   function handleToggleDeleteMenu(id) {
     setOpenDeleteMenuId((prevId) => (prevId === id ? null : id));
@@ -68,12 +68,7 @@ function NotificationList() {
                 e.stopPropagation();
                 handleToggleDeleteMenu(notification?.id);
               }}
-              style={{
-                backgroundColor: "#e5e7eb",
-                padding: "6px 7px",
-                borderRadius: "50%",
-                fontSize: "12px",
-              }}
+              className="rounded-full p-1.5 text-[12px] hover:bg-[#e5e7eb]"
             ></ion-icon>
 
             {/* DELETE NOTIFICATION BTN - Only show for this specific notification */}

@@ -158,12 +158,22 @@ export async function signout() {
 }
 
 //  GET NOIFICATION
-export async function getUserNotification(userID) {
-  const { data: notification, error } = await supabase
-    .from("notifications")
-    .select("*")
-    .eq("user_id", userID)
-    .order("id", { ascending: true });
+export async function getUserNotification({ notifId, userId }) {
+  let query = supabase.from("notifications").select("*");
+
+  if (notifId) {
+    query = query
+      .eq("id", notifId)
+      .eq("user_id", userId)
+      .order("id", { ascending: true });
+  } else {
+    query = query.eq("user_id", userId).order("id", { ascending: true });
+  }
+
+  const { data: notification, error } = await query;
+  // const { data: notification, error } =
+  //   .eq("user_id", userID)
+  //   .order("id", { ascending: true });
 
   if (error) throw new Error(error.message);
 
@@ -198,6 +208,19 @@ export async function deleteAllNotif(userId) {
   const { error } = await supabase
     .from("notifications")
     .delete()
+    .eq("user_id", userId);
+
+  if (error) throw new Error(error.message);
+}
+
+// READ A CLICK NOTIF
+export async function readNotif({ notifId, userId }) {
+  const { error } = await supabase
+    .from("notifications")
+    .update({
+      is_read: true,
+    })
+    .eq("id", notifId)
     .eq("user_id", userId);
 
   if (error) throw new Error(error.message);

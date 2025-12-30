@@ -4,7 +4,7 @@ import { useNotification } from "../../lib/useNotifications";
 import { useUser } from "../../lib/useUser";
 import NotificationList from "../NotificationList";
 
-function NotificationBox() {
+function NotificationBox({ handleOpenNotification }) {
   const { user } = useUser();
   const { data: notifications } = useNotification();
   const { markAllNotif, isMarking } = useMarkAll();
@@ -56,7 +56,7 @@ function NotificationBox() {
       </header>
 
       {/* NOTIFICATIONS LIST */}
-      <NotificationList />
+      <NotificationList handleOpenNotification={handleOpenNotification} />
     </div>
   );
 }
