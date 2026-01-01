@@ -4,7 +4,7 @@ function PageNotFound() {
   return (
     <main className="flex h-screen items-center justify-center">
       <div className="flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-semibold">
+        <h1 className="text-center text-3xl font-semibold">
           This page could not be found :(
         </h1>
         <Link

@@ -5,40 +5,40 @@ import { useNotification } from "../lib/useNotifications";
 import { useUser } from "../lib/useUser";
 import EmptyNotif from "./ui/EmptyNotif";
 
-function NotificationList({ handleOpenNotification }) {
+function NotificationList({
+  handleOpenNotification,
+  setNotifMessage,
+  setTitle,
+}) {
   const [openDeleteMenuId, setOpenDeleteMenuId] = useState(false);
 
   const { user } = useUser();
-  const { data: notifications } = useNotification();
+  const { data: userNotifs } = useNotification();
   const { deleteNotif, isDeleting } = useDeleteNotification();
-
-  // function handleOpenNotification(id) {
-  //   console.log(id);
-  // }
 
   function handleToggleDeleteMenu(id) {
     setOpenDeleteMenuId((prevId) => (prevId === id ? null : id));
   }
 
-  if (notifications?.length === 0 || null) return <EmptyNotif />;
+  if (userNotifs?.length === 0 || null) return <EmptyNotif />;
 
   return (
     <ul className="rounded-br-xl rounded-bl-xl">
-      {notifications?.map((notification, i) => (
+      {userNotifs?.map((notification, i) => (
         <li
           key={notification.id}
           onClick={() => {
             handleOpenNotification(notification?.id);
+            setNotifMessage(notification?.message);
+            setTitle(notification?.title);
           }}
-          className={`flex cursor-pointer justify-between ${i + 1 !== notifications.length ? "border-b border-b-[#E9D4FF]" : "rounded-br-xl rounded-bl-xl"} relative p-3 pb-6 ${notification.is_read ? "bg-white" : "border-l-3 border-[#901efe] bg-[#eef2ff]"}`}
+          className={`flex cursor-pointer justify-between ${i + 1 !== userNotifs.length ? "border-b border-b-[#E9D4FF]" : "rounded-br-xl rounded-bl-xl"} relative p-3 pb-6 ${notification.is_read ? "bg-white" : "border-l-3 border-[#901efe] bg-[#eef2ff]"}`}
         >
           <div className="flex items-start gap-3">
-            <div className="flex items-center justify-center rounded-full bg-green-200 px-2 py-2">
+            <div className="flex items-center justify-center rounded-full bg-green-100 px-2 py-2">
               <ion-icon
                 name="happy-outline"
-                style={{
-                  color: "blue",
-                }}
+                className="text-green-700"
               ></ion-icon>
             </div>
 

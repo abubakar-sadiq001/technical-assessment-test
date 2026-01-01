@@ -7,8 +7,10 @@ import { useSignout } from "../lib/useSignout";
 function SideBar() {
   const menuRef = useRef(0);
   const { user, isLoading } = useUser();
-  // console.log(user);
+
   const splittedEmail = user?.email?.split("@");
+  const firstEmailLetter = user?.email?.at(0);
+
   const [showLogout, setShowLogout] = useState(false);
 
   const { signoutUser, isPending } = useSignout();
@@ -86,15 +88,9 @@ function SideBar() {
             </button>
           </div>
         )}
-        <div>
-          {/* <img src="./Anonymous_face.jpg" className="h-10 w-10 rounded-full" /> */}
-          <ion-icon
-            name="person-circle-outline"
-            style={{
-              fontSize: "45px",
-            }}
-          ></ion-icon>
-        </div>{" "}
+        <div className="flex w-10 justify-center rounded-full bg-[#9013fe33] py-2 font-semibold text-[#901efe]">
+          <p>{firstEmailLetter.toUpperCase()}</p>
+        </div>
         <div>
           <h2 className="text-[14px] font-semibold">
             {isLoading ? "Loading..." : splittedEmail?.at(0)}

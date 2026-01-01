@@ -24,19 +24,14 @@ function SuccessModal({ showFeaturedModal, setShowFeaturedModal }) {
       onClick={handleOverlayClick}
       ref={overlayRef}
     >
-      <div className="relative mx-3 my-12.5 w-full max-w-[500px] overflow-hidden rounded-lg bg-white p-6 shadow-xl">
-        <ion-icon
-          name="close-outline"
-          size="large"
-          style={{
-            position: "absolute",
-            right: 15,
-            top: 10,
-            cursor: "pointer",
-            color: "gray",
-          }}
-          onClick={handleClose}
-        ></ion-icon>
+      <div className="relative mx-3 my-12.5 w-full max-w-[500px] overflow-hidden rounded-lg bg-white px-6 py-4 shadow-xl">
+        <div className="flex justify-end">
+          <ion-icon
+            name="close-outline"
+            onClick={handleClose}
+            className="cursor-pointer rounded-lg p-1 text-[25px] text-gray-500 hover:bg-gray-200 hover:text-black"
+          ></ion-icon>
+        </div>
 
         <FeaturedModalContents />
       </div>

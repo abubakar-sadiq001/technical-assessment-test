@@ -11,9 +11,11 @@ export function useSignin() {
     mutationFn: ({ email, password }) => signin({ email, password }),
 
     onSuccess: (user) => {
-      console.log(user);
-      queryClient.setQueryData(["user", user.user]);
-      navigate("/rewards", { replace: true });
+      queryClient.setQueryData(["user"], user.user);
+      // navigate("/rewards", { replace: true });
+      setTimeout(() => {
+        navigate("/rewards", { replace: true });
+      }, 300); // Small delay to ensure auth state is synchronized
     },
 
     onError: (error) => {

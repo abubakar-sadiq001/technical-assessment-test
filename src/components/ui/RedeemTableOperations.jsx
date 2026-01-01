@@ -18,51 +18,53 @@ function RedeemTableOperations({ filterName, setFilterName }) {
         Redeem Your Points
       </h1>
 
-      <div className="flex gap-2 overflow-x-auto bg-red-600">
-        <button
-          className={`flex items-center gap-3 rounded-tl-[10px] rounded-tr-[10px] px-4 py-3 ${filterName === "all" ? " relative cursor-no-drop border-b-2 border-[#901efe] bg-[rgba(144,19,254,0.2)] text-[#901efe] " : "cursor-pointer text-gray-500 hover:bg-[rgba(144,19,254,0.1)]"}`}
-          onClick={() => setFilterName("all")}
-        >
-          All Rewards
-          <p
-            className={` ${filterName === "all" ? "bg-[rgba(144,19,254,0.2)] text-[#90efe]" : "bg-[#E2E8F0] text-[#CBD5E0]"} rounded-full px-2 text-[13px] font-semibold`}
+      <div className="overflow-x-auto p-2 whitespace-nowrap max-[623px]:w-130 max-[578px]:mx-auto">
+        <div className="flex items-center gap-2">
+          <button
+            className={`flex items-center gap-3 rounded-tl-[10px] rounded-tr-[10px] px-4 py-3 ${filterName === "all" ? " relative cursor-no-drop border-b-2 border-[#901efe] bg-[rgba(144,19,254,0.2)] text-[#901efe] " : "cursor-pointer text-gray-500 hover:bg-[rgba(144,19,254,0.1)]"}`}
+            onClick={() => setFilterName("all")}
           >
-            {allRewards || 0}
-          </p>
-        </button>
-        <button
-          className={`flex items-center gap-3 rounded-tl-[10px] rounded-tr-[10px] px-4 py-3 ${filterName === "unlocked" ? " cursor-no-drop border-b-2 border-[#901efe] bg-[rgba(144,19,254,0.2)] text-[#901efe]" : "cursor-pointer text-gray-500 hover:bg-[rgba(144,19,254,0.1)]"} `}
-          onClick={() => setFilterName("unlocked")}
-        >
-          Unlocked
-          <p
-            className={` ${filterName === "unlocked" ? "bg-[rgba(144,19,254,0.2)] text-[#90efe]" : "bg-[#E2E8F0] text-[#CBD5E0]"} rounded-full px-2 text-[13px] font-semibold`}
+            All Rewards
+            <p
+              className={` ${filterName === "all" ? "bg-[rgba(144,19,254,0.2)] text-[#90efe]" : "bg-[#E2E8F0] text-[#CBD5E0]"} rounded-full px-2 text-[13px] font-semibold`}
+            >
+              {allRewards || 0}
+            </p>
+          </button>
+          <button
+            className={`flex items-center gap-3 rounded-tl-[10px] rounded-tr-[10px] px-4 py-3 ${filterName === "unlocked" ? " cursor-no-drop border-b-2 border-[#901efe] bg-[rgba(144,19,254,0.2)] text-[#901efe]" : "cursor-pointer text-gray-500 hover:bg-[rgba(144,19,254,0.1)]"} `}
+            onClick={() => setFilterName("unlocked")}
           >
-            {!unlockedRewards?.length ? 0 : unlockedRewards}
-          </p>
-        </button>
-        <button
-          className={`flex items-center gap-3 rounded-tl-[10px] rounded-tr-[10px] ${filterName === "locked" ? " cursor-no-drop border-b-2 border-[#901efe] bg-[rgba(144,19,254,0.2)] text-[#901efe] " : "cursor-pointer text-gray-500 hover:bg-[rgba(144,19,254,0.1)]"} px-4 py-3`}
-          onClick={() => setFilterName("locked")}
-        >
-          Locked
-          <p
-            className={` ${filterName === "locked" ? "bg-[rgba(144,19,254,0.2)] text-[#90efe]" : "bg-[#E2E8F0] text-[#CBD5E0]"} rounded-full px-2 text-[13px] font-semibold`}
+            Unlocked
+            <p
+              className={` ${filterName === "unlocked" ? "bg-[rgba(144,19,254,0.2)] text-[#90efe]" : "bg-[#E2E8F0] text-[#CBD5E0]"} rounded-full px-2 text-[13px] font-semibold`}
+            >
+              {!unlockedRewards?.length ? 0 : unlockedRewards}
+            </p>
+          </button>
+          <button
+            className={`flex items-center gap-3 rounded-tl-[10px] rounded-tr-[10px] ${filterName === "locked" ? " cursor-no-drop border-b-2 border-[#901efe] bg-[rgba(144,19,254,0.2)] text-[#901efe] " : "cursor-pointer text-gray-500 hover:bg-[rgba(144,19,254,0.1)]"} px-4 py-3`}
+            onClick={() => setFilterName("locked")}
           >
-            {locked}{" "}
-          </p>
-        </button>
-        <button
-          className={`flex items-center gap-3 rounded-tl-[10px] rounded-tr-[10px] px-4 py-3 ${filterName === "soon" ? " cursor-no-drop border-b-2 border-[#901efe] bg-[rgba(144,19,254,0.2)] text-[#901efe] " : "cursor-pointer text-gray-500 hover:bg-[rgba(144,19,254,0.1)] "}`}
-          onClick={() => setFilterName("soon")}
-        >
-          Comin Soon
-          <p
-            className={` ${filterName === "soon" ? "bg-[rgba(144,19,254,0.2)] text-[#90efe]" : "bg-[#E2E8F0] text-[#CBD5E0]"} rounded-full px-2 text-[13px] font-semibold`}
+            Locked
+            <p
+              className={` ${filterName === "locked" ? "bg-[rgba(144,19,254,0.2)] text-[#90efe]" : "bg-[#E2E8F0] text-[#CBD5E0]"} rounded-full px-2 text-[13px] font-semibold`}
+            >
+              {locked}{" "}
+            </p>
+          </button>
+          <button
+            className={`flex items-center gap-3 rounded-tl-[10px] rounded-tr-[10px] px-4 py-3 ${filterName === "soon" ? " cursor-no-drop border-b-2 border-[#901efe] bg-[rgba(144,19,254,0.2)] text-[#901efe] " : "cursor-pointer text-gray-500 hover:bg-[rgba(144,19,254,0.1)] "}`}
+            onClick={() => setFilterName("soon")}
           >
-            {cominSoon}
-          </p>
-        </button>
+            Comin Soon
+            <p
+              className={` ${filterName === "soon" ? "bg-[rgba(144,19,254,0.2)] text-[#90efe]" : "bg-[#E2E8F0] text-[#CBD5E0]"} rounded-full px-2 text-[13px] font-semibold`}
+            >
+              {cominSoon}
+            </p>
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -3,11 +3,11 @@ import { getUserNotification } from "./data-service";
 import { useUser } from "./useUser";
 
 export function useNotification() {
-  // const { user } = useUser();
+  const { user } = useUser();
 
   const { data, isLoading } = useQuery({
     queryKey: ["notifications"],
-    queryFn: () => getUserNotification,
+    queryFn: () => getUserNotification(user?.id),
   });
 
   return { data, isLoading };

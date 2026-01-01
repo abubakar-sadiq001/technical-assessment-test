@@ -1,12 +1,18 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { readNotif } from "./data-service";
+import toast from "react-hot-toast";
 
 function useReadNotif() {
+  const queryClient = useQueryClient();
   const { mutate: readUserNotif, isPending: isReading } = useMutation({
     mutationFn: readNotif,
 
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["notifications"] });
+    },
+
     onError: () => {
-      alert("Failed to open notificaton!");
+      toast.success("Failed to open notificaton!");
     },
   });
 

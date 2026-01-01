@@ -4,7 +4,11 @@ import { useNotification } from "../../lib/useNotifications";
 import { useUser } from "../../lib/useUser";
 import NotificationList from "../NotificationList";
 
-function NotificationBox({ handleOpenNotification }) {
+function NotificationBox({
+  handleOpenNotification,
+  setNotifMessage,
+  setTitle,
+}) {
   const { user } = useUser();
   const { data: notifications } = useNotification();
   const { markAllNotif, isMarking } = useMarkAll();
@@ -24,7 +28,7 @@ function NotificationBox({ handleOpenNotification }) {
   }
 
   return (
-    <div className="absolute top-20 right-5 w-full max-w-100 rounded-xl shadow-[0px_8px_15px] shadow-gray-300">
+    <div className="absolute top-20 right-5 w-full max-w-100 rounded-xl shadow-[0px_8px_15px] shadow-gray-300 max-[439px]:left-4 max-[411px]:left-2">
       <header className="flex items-center justify-between rounded-tl-xl rounded-tr-xl bg-[linear-gradient(45deg,#901efe,#ffc5c5)] px-5 py-5">
         <div>
           <h1 className="text-[17px] font-semibold text-white">
@@ -56,7 +60,11 @@ function NotificationBox({ handleOpenNotification }) {
       </header>
 
       {/* NOTIFICATIONS LIST */}
-      <NotificationList handleOpenNotification={handleOpenNotification} />
+      <NotificationList
+        handleOpenNotification={handleOpenNotification}
+        setNotifMessage={setNotifMessage}
+        setTitle={setTitle}
+      />
     </div>
   );
 }

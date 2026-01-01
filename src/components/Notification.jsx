@@ -1,7 +1,10 @@
 import { useNotification } from "../lib/useNotifications";
+import { useUser } from "../lib/useUser";
 
 function Notification({ setOpenBox }) {
-  const { data: notifications } = useNotification();
+  const { user } = useUser();
+
+  const { data: notifications } = useNotification(user?.id);
   const unreadNotifs =
     notifications?.filter((notification) => notification.is_read === false)
       ?.length || 0;

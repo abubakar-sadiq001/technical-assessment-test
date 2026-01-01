@@ -1,17 +1,27 @@
+import { differenceInDays } from "date-fns";
 import { useGetWeeks } from "../lib/useGetWeekDay";
+import { useProfile } from "../lib/useProfile";
+import ClaimBtn from "./ui/ClaimBtn";
 
 function DailyStreak({ setShowSuccessModal }) {
   const { weekDays, isLoading } = useGetWeeks();
   const currentDay = new Date().getDay();
-  const totalClaimedDays =
-    weekDays?.filter((day) => day.isClaimed === true).length || 0;
+  // const totalClaimedDays =
+  //   weekDays?.filter((day) => day.isClaimed === true).length || 0;
 
   // const { profile, isLoading: isGetProfile } = useGetProfile();
   // console.log(profile);
 
   //   const activeDay = weekDays?.find((day) => day.week_value === currentDay);
 
-  //
+  const { profile } = useProfile();
+  const streakCount = profile?.streakCount;
+
+  const dayDifference = differenceInDays(
+    new Date().setHours(0, 0, 0, 0),
+    new Date("2025 12 31"),
+  );
+  console.log(dayDifference);
 
   // function handleClick() {
   //   // updateStreak(
@@ -40,26 +50,21 @@ function DailyStreak({ setShowSuccessModal }) {
       <section className="p-3">
         {/*  */}
         <h1 className="my-4 text-4xl font-extrabold text-[#9013FE]">
-          {totalClaimedDays} days
+          {streakCount} days
         </h1>
 
         {/*  */}
         <ul className="mt-8 flex justify-center gap-2">
           {weekDays?.map((day) => (
-            <li key={day.id} className="">
-              {!isLoading ? (
-                <div
-                  className={`flex w-full items-center px-3 py-2 max-[988px]:px-4 max-[988px]:py-3 ${day.week_value === currentDay && " rounded-full border-2 border-[#901efe] ring-2 ring-[#9013FE] ring-offset-1 "} justify-center rounded-full ${day.isClaimed === true && day.week_value != currentDay ? "border-3 border-cyan-200 bg-[#70D6FF] text-white " : "bg-gray-200"} text-center font-semibold`}
-                >
-                  <p
-                    className={`text-[14px] ${day.isClaimed === true && day.week_value != currentDay ? "text-white" : "text-gray-500"} `}
-                  >
-                    {day.week_day.slice(0, 1)}
-                  </p>
-                </div>
-              ) : (
-                <p className="tex-cener">Loading...</p>
-              )}
+            <li
+              key={day.id}
+              className={`mt-8 flex h-9 w-9 flex-wrap ${day.week_value === currentDay && " rounded-full border-2 border-[#901efe] ring-2 ring-[#9013FE] ring-offset-1 "} items-center justify-center rounded-full ${day.isClaimed === true && day.week_value != currentDay ? "border-3 border-cyan-200 bg-[#70D6FF] text-white " : "bg-gray-200"}`}
+            >
+              <p
+                className={`text-[14px] ${day.isClaimed === true && day.week_value != currentDay ? "text-white" : "text-gray-500"} `}
+              >
+                {day.week_day.slice(0, 1)}
+              </p>
             </li>
           ))}
         </ul>
@@ -69,31 +74,8 @@ function DailyStreak({ setShowSuccessModal }) {
           Check in daily to to earn +5 points
         </p>
         {/*  */}
-        <button
-          // onClick={handleClick}
-          // disabled={activeDay?.isClaimed === true || isPending}
-          // className={`flex w-full cursor-pointer items-center justify-center gap-2 rounded-full py-3 text-[14px] font-semibold ${isPending || activeDay?.isClaimed === true ? "bg-gray-200 text-gray-500" : "bg-[#9013FE] text-white"}`}
-          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-[#9013FE] bg-gray-200 py-3 text-[14px] font-semibold text-gray-500 text-white"
-          // style={{
-          //   cursor:
-          //     isPending || activeDay?.isClaimed === true
-          //       ? "no-drop"
-          //       : "pointer",
-          // }}
-        >
-          <div>
-            <img
-              src="./energy-icon-white.svg"
-              // src={
-              //   activeDay?.isClaimed === true || isPending
-              //     ? "./energy-icon-gray.svg"
-              //     : "./energy-icon-white.svg"
-              // }
-              width={20}
-            />
-          </div>
-          Claim Today
-        </button>
+
+        <ClaimBtn />
       </section>
     </div>
   );
