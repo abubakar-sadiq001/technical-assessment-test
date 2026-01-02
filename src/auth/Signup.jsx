@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link, useSearchParams } from "react-router";
-import { useSignup } from "../lib/useSignup";
+import { useSignup } from "/src/lib/useSignup.js";
 
 function Signup() {
   const [searchParam, setSeachParam] = useSearchParams();
