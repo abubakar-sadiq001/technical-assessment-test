@@ -234,3 +234,15 @@ export async function updateLastClaim(userId) {
 
   if (error) throw new Error(error.message);
 }
+
+// RESET STREAK
+export async function resetStreak(userId) {
+  const { error } = await supabase
+    .from("profiles")
+    .update({
+      streakCount: 0,
+    })
+    .eq("user_id", userId);
+
+  if (error) throw new Error(error.message);
+}

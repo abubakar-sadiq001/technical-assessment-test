@@ -6,33 +6,9 @@ import ClaimBtn from "./ui/ClaimBtn";
 function DailyStreak({ setShowSuccessModal }) {
   const { weekDays, isLoading } = useGetWeeks();
   const currentDay = new Date().getDay();
-  // const totalClaimedDays =
-  //   weekDays?.filter((day) => day.isClaimed === true).length || 0;
-
-  // const { profile, isLoading: isGetProfile } = useGetProfile();
-  // console.log(profile);
-
-  //   const activeDay = weekDays?.find((day) => day.week_value === currentDay);
 
   const { profile } = useProfile();
   const streakCount = profile?.streakCount;
-
-  const dayDifference = differenceInDays(
-    new Date().setHours(0, 0, 0, 0),
-    new Date("2025 12 31"),
-  );
-  console.log(dayDifference);
-
-  // function handleClick() {
-  //   // updateStreak(
-  //     { streakID: activeDay.id },
-  //     {
-  //       onSettled: () => {
-  //         setShowSuccessModal(true);
-  //       },
-  //     },
-  //   );
-  // }
 
   return (
     <div className="w-full translate-y-0 transform rounded-xl bg-gray-50 shadow-[0px_5px_10px] shadow-[#dcdcdc] duration-300 hover:-translate-y-1.5 hover:shadow-[0px_8px_10px]">
@@ -58,10 +34,11 @@ function DailyStreak({ setShowSuccessModal }) {
           {weekDays?.map((day) => (
             <li
               key={day.id}
-              className={`mt-8 flex h-9 w-9 flex-wrap ${day.week_value === currentDay && " rounded-full border-2 border-[#901efe] ring-2 ring-[#9013FE] ring-offset-1 "} items-center justify-center rounded-full ${day.isClaimed === true && day.week_value != currentDay ? "border-3 border-cyan-200 bg-[#70D6FF] text-white " : "bg-gray-200"}`}
+              className={`mt-8 flex h-9 w-9 flex-wrap ${day.week_value === currentDay && " rounded-full border-2 border-[#901efe] ring-2 ring-[#9013FE] ring-offset-1 "} items-center justify-center rounded-full bg-gray-200`}
             >
               <p
-                className={`text-[14px] ${day.isClaimed === true && day.week_value != currentDay ? "text-white" : "text-gray-500"} `}
+                // border-cyan-200 bg-[#70D6FF] text-white
+                className={`text-[14px] text-gray-500`}
               >
                 {day.week_day.slice(0, 1)}
               </p>
@@ -75,7 +52,7 @@ function DailyStreak({ setShowSuccessModal }) {
         </p>
         {/*  */}
 
-        <ClaimBtn />
+        <ClaimBtn setShowSuccessModal={setShowSuccessModal} />
       </section>
     </div>
   );

@@ -1,20 +1,13 @@
 import { useEffect, useState } from "react";
-import { getProfileData } from "../lib/data-service";
-import { useUser } from "../lib/useUser";
+import { useProfile } from "../lib/useProfile";
 
 function ReferralLink() {
   const [isCopied, setIsCopied] = useState(false);
-  const [code, setCode] = useState("");
 
   // const { profile, isLoading } = useGetProfile();
-  const { user } = useUser();
-  const profile = getProfileData(user?.id);
-  profile.then((data) => {
-    setCode(data?.referral_code);
-    // console.log(data);
-  });
+  const { profile } = useProfile();
   // const link = `http://localhost:5173/signup?ref=`;
-  const link = `http://localhost:5173/signup?ref=${code || "loading"}`;
+  const link = `http://localhost:5173/signup?ref=${profile?.referral_code || "loading"}`;
 
   useEffect(() => {
     setTimeout(() => {

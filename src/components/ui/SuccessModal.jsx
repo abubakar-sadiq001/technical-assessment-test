@@ -24,16 +24,15 @@ function SuccessModal({ showSuccessModal, setShowSuccessModal }) {
       onClick={handleOverlayClick}
       ref={overlayRef}
     >
-      <div className="relative my-12.5 w-full max-w-85 overflow-hidden rounded-lg bg-white p-6 text-center shadow-xl">
+      <div className="relative mx-4 my-12.5 w-full max-w-85 overflow-hidden rounded-lg bg-white p-6 text-center shadow-xl">
         <ion-icon
           name="close-outline"
           size="large"
+          className="cursor-pointer rounded-lg p-1 text-[25px] text-gray-500 hover:bg-gray-200 hover:text-black"
           style={{
             position: "absolute",
             right: 15,
             top: 10,
-            cursor: "pointer",
-            color: "gray",
           }}
           onClick={handleClose}
         ></ion-icon>

@@ -89,7 +89,7 @@ function SideBar() {
           </div>
         )}
         <div className="flex w-10 justify-center rounded-full bg-[#9013fe33] py-2 font-semibold text-[#901efe]">
-          <p>{firstEmailLetter.toUpperCase()}</p>
+          <p>{firstEmailLetter?.toUpperCase()}</p>
         </div>
         <div>
           <h2 className="text-[14px] font-semibold">

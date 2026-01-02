@@ -13,7 +13,7 @@ function Success() {
 
       <h1 className="my-3 text-4xl font-bold text-purple-600">+5 Points</h1>
 
-      <p>✨ 💎 🎯</p>
+      <p className="animate-bounce">✨ 💎 🎯</p>
 
       <p className="mt-2 mb-6 text-[14px]">
         You've claimed your daily points! Come back tomorrow

@@ -13,7 +13,7 @@ function RewardsJourney({ setShowSuccessModal, setShowFeaturedModal }) {
         <PointsBalance />
 
         {/* <DailyStreak setShowSuccessModal={setShowSuccessModal} /> */}
-        <DailyStreak2 />
+        <DailyStreak2 setShowSuccessModal={setShowSuccessModal} />
 
         <Featured setShowFeaturedModal={setShowFeaturedModal} />
       </div>
