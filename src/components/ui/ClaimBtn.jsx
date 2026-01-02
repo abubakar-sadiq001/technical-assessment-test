@@ -1,5 +1,4 @@
 import { differenceInDays } from "date-fns";
-import { useEffect } from "react";
 import { useProfile } from "../../lib/useProfile";
 import { useResetStreak } from "../../lib/useResetStreak";
 import { useUpdateLastClaim } from "../../lib/useUpdateLastClaim";
@@ -19,11 +18,11 @@ function ClaimBtn({ setShowSuccessModal }) {
   const dayDifference = differenceInDays(today, lastActive);
   const disabled = dayDifference === 0;
 
-  useEffect(() => {
-    if (user?.id && dayDifference > 1) {
-      resetUserStreak(user?.id);
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (dayDifference > 1) {
+  //     resetUserStreak(user?.id);
+  //   }
+  // }, [dayDifference]);
 
   function handleClaiming() {
     // Set time to midnight for consistent day comparison, handles timezones for the current user
@@ -54,6 +53,7 @@ function ClaimBtn({ setShowSuccessModal }) {
         updateLastClaim(user?.id, {
           onSuccess: () => {
             setShowSuccessModal(true);
+            resetUserStreak(user?.id);
           },
         });
       }

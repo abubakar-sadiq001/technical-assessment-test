@@ -29,8 +29,8 @@ function Signin() {
   }
 
   return (
-    <div className="w-full bg-[linear-gradient(#901efe,#6D28D9)] p-5">
-      <div className="mx-auto w-full max-w-105 rounded-md bg-white px-8 py-5">
+    <div className="flex h-screen w-full justify-center bg-[linear-gradient(#901efe,#6D28D9)] p-5">
+      <div className="h-full max-h-[450px] w-full max-w-105 overflow-y-auto rounded-md bg-white px-8 py-5">
         <div className="text-center">
           <h1 className="text-[23px] font-bold text-[#901efe]">
             Log in to flowva{" "}

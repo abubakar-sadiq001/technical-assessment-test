@@ -35,23 +35,6 @@ export async function getProfileData(userID) {
   return data;
 }
 
-// // CONCERN
-// export async function claimPoints(id) {
-//   const { data, error } = await supabase
-//     .from("weekDays")
-//     .update({ isClaimed: true })
-//     .eq("id", id)
-//     .select()
-//     .single();
-
-//   if (error) {
-//     throw new Error("Error", error.message);
-//   }
-
-//   console.log(id);
-//   return data;
-// }
-
 // REDEEM REWARDS
 export async function getRedeems() {
   const { data: rewards, error } = await supabase
@@ -220,7 +203,7 @@ export async function readNotif({ notifId, userId }) {
 export async function updateLastClaim(userId) {
   const { data: data } = await supabase
     .from("profiles")
-    .select("streakCount")
+    .select("streakCount, points")
     .eq("user_id", userId)
     .single();
 
@@ -228,6 +211,7 @@ export async function updateLastClaim(userId) {
     .from("profiles")
     .update({
       streakCount: data.streakCount + 1,
+      points: data.points + 5,
       last_claimed_at: new Date().toISOString(),
     })
     .eq("user_id", userId);

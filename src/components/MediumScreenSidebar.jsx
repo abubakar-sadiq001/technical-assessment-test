@@ -122,11 +122,11 @@ function MediumScreenSidebar({ setShowMediumSideBar }) {
                 </button>
               </div>
             )}
-            <div className="w-10 rounded-full bg-[#9013fe33] py-2 font-semibold text-[#901efe]">
-              {firstEmailLetter.toUpperCase()}
-            </div>{" "}
+            <div className="flex w-10 justify-center rounded-full bg-[#9013fe33] py-2 font-semibold text-[#901efe]">
+              <p>{firstEmailLetter?.toUpperCase()}</p>
+            </div>
             <div>
-              <h2 className="text-[14px] font-semibold">
+              <h2 className="text-left text-[14px] font-semibold">
                 {isLoading ? "Loading..." : splittedEmail?.at(0)}
               </h2>
               <p className="text-[13px] text-gray-400">

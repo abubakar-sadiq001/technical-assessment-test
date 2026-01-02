@@ -1,12 +1,16 @@
-import { useGetWeeks } from "../lib/useGetWeekDay";
+import { useProfile } from "../lib/useProfile";
 
 const MAX = 5000;
 
 function PointsBalance() {
-  const { weekDays } = useGetWeeks();
-  const streakLength = weekDays?.filter((day) => day.isClaimed)?.length;
-  const PointBalance = 5 * streakLength;
+  const { profile, isLoading } = useProfile();
+  const PointBalance = profile?.points;
   const calculatedRange = Math.min((PointBalance / MAX) * 100, 100);
+
+  if (isLoading)
+    return (
+      <div className="max-85 h-75 w-full animate-pulse rounded-xl bg-gray-300"></div>
+    );
 
   return (
     <div className="w-full translate-y-0 transform rounded-xl bg-gray-50 shadow-[0px_5px_10px] shadow-[#dcdcdc] duration-300 hover:-translate-y-1.5 hover:shadow-[0px_8px_10px]">
@@ -25,7 +29,7 @@ function PointsBalance() {
         {/*  */}
         <div className="mt-7 flex items-center justify-between px-2">
           <h1 className="text-4xl font-extrabold text-[#9013FE]">
-            {PointBalance}
+            {profile?.points}
           </h1>
           <div>
             <img src="./coin.png" width={45} draggable={false} id="coin" />
@@ -45,7 +49,7 @@ function PointsBalance() {
           <div>
             <div className="relative h-2 w-full rounded-full bg-gray-200">
               <div
-                className="absolute left-[1px] h-2 rounded-full bg-[#901efe] transition-all duration-300"
+                className="absolute left-px h-2 rounded-full bg-[#901efe] transition-all duration-300"
                 style={{
                   width: calculatedRange + "%",
                 }}

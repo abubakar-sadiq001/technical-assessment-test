@@ -5,7 +5,6 @@ import { useSignup } from "../lib/useSignUp";
 function Signup() {
   const [searchParam, setSeachParam] = useSearchParams();
   // const xyz = setSeachParam(searchParam);
-  console.log(searchParam.get("ref"));
 
   const { signupUser, isPending } = useSignup();
   const { register, formState, getValues, handleSubmit, reset } = useForm();
@@ -19,8 +18,8 @@ function Signup() {
   }
 
   return (
-    <div className="w-full bg-[linear-gradient(#901efe,#6D28D9)] p-5">
-      <div className="mx-auto w-full max-w-105 rounded-md bg-white px-8 py-5">
+    <div className="flex h-screen w-full justify-center bg-[linear-gradient(#901efe,#6D28D9)] p-5">
+      <div className="w-full max-w-105 overflow-y-auto rounded-md bg-white px-8 py-5">
         <div className="text-center">
           <h1 className="text-[23px] font-bold text-[#901efe]">
             Create Your Account

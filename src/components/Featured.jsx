@@ -17,7 +17,10 @@ function Featured({ setShowFeaturedModal }) {
       <section className="">
         {/*  */}
         <div className="flex gap-4 px-4 py-3">
-          <ion-icon name="calendar" style={{ fontSize: "30px" }}></ion-icon>
+          <ion-icon
+            name="calendar"
+            className="text-[30px] text-[#901efe]"
+          ></ion-icon>
           <div>
             <p className="text-[14px] font-semibold text-gray-800">
               Automate and Optimize Your Schedule

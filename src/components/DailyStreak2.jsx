@@ -1,14 +1,18 @@
-import { differenceInDays } from "date-fns";
 import { useGetWeeks } from "../lib/useGetWeekDay";
 import { useProfile } from "../lib/useProfile";
 import ClaimBtn from "./ui/ClaimBtn";
 
 function DailyStreak({ setShowSuccessModal }) {
-  const { weekDays, isLoading } = useGetWeeks();
+  const { weekDays } = useGetWeeks();
   const currentDay = new Date().getDay();
 
-  const { profile } = useProfile();
+  const { profile, isLoading } = useProfile();
   const streakCount = profile?.streakCount;
+
+  if (isLoading)
+    return (
+      <div className="max-85 h-75 w-full animate-pulse rounded-xl bg-gray-300"></div>
+    );
 
   return (
     <div className="w-full translate-y-0 transform rounded-xl bg-gray-50 shadow-[0px_5px_10px] shadow-[#dcdcdc] duration-300 hover:-translate-y-1.5 hover:shadow-[0px_8px_10px]">
