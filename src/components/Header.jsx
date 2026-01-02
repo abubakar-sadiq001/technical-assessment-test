@@ -4,7 +4,7 @@ import { useUser } from "../lib/useUser";
 import Notification from "./Notification";
 import NotificationBox from "./ui/NotificationBox";
 import NotificationModal from "./ui/NotificationModal";
-import MediumScreenSidebar from "./mediumScreenSidebar";
+import MediumScreenSidebar from "./MediumScreenSidebar";
 
 function Header() {
   const [openBox, setOpenBox] = useState(false);
