@@ -10,7 +10,8 @@ function ClaimBtn({ setShowSuccessModal }) {
   const { profile } = useProfile();
   const { resetUserStreak } = useResetStreak();
 
-  const today = new Date().setHours(0, 0, 0, 0);
+  const today = new Date();
+  // today.setHours(0, 0, 0, 0);
   const lastActive = profile?.last_claimed_at
     ? new Date(profile?.last_claimed_at)
     : null;
